@@ -39,3 +39,6 @@
     小提示
     周字段的设置，若使用英文字母是不区分大小写的 MON 与mon相同.
     ```
+
+参考：  
+<https://www.cnblogs.com/zzti08/p/5203213.html>
