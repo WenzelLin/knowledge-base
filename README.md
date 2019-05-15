@@ -10,6 +10,10 @@
 
 * [SQL](https://github.com/WenzelLin/knowledge-base/blob/master/SQL/README.md)
 
+* [Design Patterns](https://github.com/WenzelLin/knowledge-base/blob/master/Design%20Patterns/README.md)
+
+* [Tomcat](https://github.com/WenzelLin/knowledge-base/blob/master/Tomcat/README.md)
+
 * [WebService](https://github.com/WenzelLin/knowledge-base/blob/master/WebService/README.md)
 
 * [Redis](https://github.com/WenzelLin/knowledge-base/blob/master/Redis/README.md)
