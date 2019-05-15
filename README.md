@@ -6,13 +6,15 @@
 
 * [Hibernate](https://github.com/WenzelLin/knowledge-base/blob/master/Hibernate/README.md)
 
-* [Transaction 事务](https://github.com/WenzelLin/knowledge-base/blob/master/Transaction/README.md)
+* [Transaction](https://github.com/WenzelLin/knowledge-base/blob/master/Transaction/README.md)
 
 * [SQL](https://github.com/WenzelLin/knowledge-base/blob/master/SQL/README.md)
 
 * [Design Patterns](https://github.com/WenzelLin/knowledge-base/blob/master/Design%20Patterns/README.md)
 
 * [Tomcat](https://github.com/WenzelLin/knowledge-base/blob/master/Tomcat/README.md)
+
+* [MVC](https://github.com/WenzelLin/knowledge-base/blob/master/MVC/README.md)
 
 * [WebService](https://github.com/WenzelLin/knowledge-base/blob/master/WebService/README.md)
 
