@@ -11,3 +11,7 @@
 * [NewWork Request 网络请求](https://github.com/WenzelLin/knowledge-base/blob/master/Java/Network/REAMDME.md)
 
 * [Java中对数组或集合进行排序的方法](https://github.com/WenzelLin/knowledge-base/blob/master/Java/Sort.md)
+
+* 原子操作的实现原理 CAS 总线锁 缓存锁
+* HashTable的数据结构
+* 解决并发问题的几种方案 synchronized volatile final lock()
