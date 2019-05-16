@@ -1,3 +1,6 @@
+# MySql 搜索引擎
+# oracle 索引的引擎
+
 oracle 查询表名以及表的列名
 
 oracle 查询表名以及表的列名的代码。
