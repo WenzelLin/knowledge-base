@@ -6,9 +6,9 @@
 
 ![SHOW ENGINES](http://c.biancheng.net/uploads/allimg/190222/4-1Z2221K006125.gif)
 
-![MySQL插件式存储引擎体系结构](https://github.com/WenzelLin/knowledge-base/new/master/SQL/MySQL/MySQL插件式存储引擎体系结构.jpg?raw=true)
+![MySQL插件式存储引擎体系结构](https://github.com/WenzelLin/knowledge-base/blob/master/SQL/MySQL/MySQL%E6%8F%92%E4%BB%B6%E5%BC%8F%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.jpg?raw=true)
   
-![MySQL提供的存储引擎](https://github.com/WenzelLin/knowledge-base/new/master/SQL/MySQL/MySQL提供的存储引擎.jpg?raw=true)
+![MySQL提供的存储引擎](https://github.com/WenzelLin/knowledge-base/blob/master/SQL/MySQL/MySQL%E6%8F%92%E4%BB%B6%E5%BC%8F%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.jpg?raw=true)
 
 * Innodb引擎
   该存储引擎为MySQL表提供了ACID事务支持、系统崩溃修复能力和多版本并发控制（即MVCC Multi-Version Concurrency Control）的行级锁;该引擎支持自增长列（auto_increment）,自增长列的值不能为空，如果在使用的时候为空则自动从现有值开始增值，如果有但是比现在的还大，则直接保存这个值; 该引擎存储引擎支持外键（foreign key） ,外键所在的表称为子表而所依赖的表称为父表。该引擎在5.5后的MySQL数据库中为默认存储引擎。
