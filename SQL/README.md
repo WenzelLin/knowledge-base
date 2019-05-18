@@ -1,6 +1,8 @@
 # MySql 搜索引擎
 # oracle 索引的引擎
 
+* [oracle索引，索引的建立、修改、删除](https://www.cnblogs.com/djcsch2001/articles/1823459.html)
+
 oracle 查询表名以及表的列名
 
 oracle 查询表名以及表的列名的代码。
