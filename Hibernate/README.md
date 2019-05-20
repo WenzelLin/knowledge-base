@@ -82,3 +82,26 @@
 
   hibernate做insert，update，delete时，会自动使用该模式（内部使用）。
   
+# getHibernateTemplate()
+
+spring 中获得由spring所配置的hibernate的操作对象,然后利用此对象进行，保存，修改和删除等操作，此方法是在配置了spring以后，hibernate由spring接管，不直接使用hibernate的session了 
+
+HibernateTemplate提供非常多的常用方法来完成基本的操作，比如通常的增加、删除、修改、查询等操作，Spring 2.0更增加对命名SQL查询的支持，也增加对分页的支持。大部分情况下，使用Hibernate的常规用法，就可完成大多数DAO对象的CRUD操作。
+
+下面是HibernateTemplate的常用方法简介：
+*      void delete(Object entity)：删除指定持久化实例
+*      deleteAll(Collection entities)：删除集合内全部持久化类实例
+*      find(String queryString)：根据HQL查询字符串来返回实例集合
+*      findByNamedQuery(String queryName)：根据命名查询返回实例集合
+*      get(Class entityClass, Serializable id)：根据主键加载特定持久化类的实例
+*      save(Object entity)：保存新的实例
+*      saveOrUpdate(Object entity)：根据实例状态，选择保存或者更新
+*      update(Object entity)：更新实例的状态，要求entity是持久状态
+*      setMaxResults(int maxResults)：设置分页的大小
+
+getHibernateTemplate已经封装好了一些基本的方法，可以直接去用，也就是template嘛， 
+
+而getSession只是获取一个数据工厂的session，然后大部分方法都需要自己写，加hql语句，然后用query方法执行 
+
+# 参考
+ * [Hibernate 的getHibernateTemplate()方法使用](https://blog.csdn.net/wallwind/article/details/6269094)
