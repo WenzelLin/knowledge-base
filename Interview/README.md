@@ -126,101 +126,101 @@ SpringCloud五大核心组件：
 
   1. 九种基本数据类型的大小，以及他们的封装类。
 
-  2. Switch能否用string做参数？
+  2， Switch能否用string做参数？
 
-  3. equals与==的区别。
+  3， equals与==的区别。
 
-  4. Object有哪些公用方法？
+  4， Object有哪些公用方法？
 
-  5. Java的四种引用，强弱软虚，用到的场景。
+  5， Java的四种引用，强弱软虚，用到的场景。
 
-  6. Hashcode的作用。
+  6， Hashcode的作用。
 
-  7. ArrayList、LinkedList、Vector的区别。
+  7， ArrayList、LinkedList、Vector的区别。
 
-  8. String、StringBuffer与StringBuilder的区别。
+  8， String、StringBuffer与StringBuilder的区别。
 
-  9. Map、Set、List、Queue、Stack的特点与用法。
+  9， Map、Set、List、Queue、Stack的特点与用法。
 
-  10. HashMap和HashTable的区别。
+  10， HashMap和HashTable的区别。
 
-  11. HashMap和ConcurrentHashMap的区别，HashMap的底层源码。
+  11， HashMap和ConcurrentHashMap的区别，HashMap的底层源码。
 
-  12. TreeMap、HashMap、LindedHashMap的区别。
+  12， TreeMap、HashMap、LindedHashMap的区别。
 
-  13. Collection包结构，与Collections的区别。
+  13， Collection包结构，与Collections的区别。
 
-  14. try catch finally，try里有return，finally还执行么？
+  14， try catch finally，try里有return，finally还执行么？
 
-  15. Excption与Error包结构。OOM你遇到过哪些情况，SOF你遇到过哪些情况。
+  15， Excption与Error包结构。OOM你遇到过哪些情况，SOF你遇到过哪些情况。
 
-  16. Java面向对象的三个特征与含义。
+  16， Java面向对象的三个特征与含义。
 
-  17. Override和Overload的含义去区别。
+  17， Override和Overload的含义去区别。
 
-  18. Interface与abstract类的区别。
+  18， Interface与abstract类的区别。
 
-  19. Static class 与non static class的区别。
+  19， Static class 与non static class的区别。
 
-  20. java多态的实现原理。
+  20， java多态的实现原理。
 
-  21. 实现多线程的两种方法：Thread与Runable。
+  21， 实现多线程的两种方法：Thread与Runable。
 
-  22. 线程同步的方法：sychronized、lock、reentrantLock等。
+  22， 线程同步的方法：sychronized、lock、reentrantLock等。
 
-  23. 锁的等级：方法锁、对象锁、类锁。
+  23， 锁的等级：方法锁、对象锁、类锁。
 
-  24. 写出生产者消费者模式。
+  24， 写出生产者消费者模式。
 
-  25. ThreadLocal的设计理念与作用。
+  25， ThreadLocal的设计理念与作用。
 
-  26. ThreadPool用法与优势。
+  26， ThreadPool用法与优势。
 
-  27. Concurrent包里的其他东西：ArrayBlockingQueue、CountDownLatch等等。
+  27， Concurrent包里的其他东西：ArrayBlockingQueue、CountDownLatch等等。
 
-  28. wait()和sleep()的区别。
+  28， wait()和sleep()的区别。
 
-  29. foreach与正常for循环效率对比。
+  29， foreach与正常for循环效率对比。
 
-  30. Java IO与NIO。
+  30， Java IO与NIO。
 
-  31. 反射的作用于原理。
+  31， 反射的作用于原理。
 
-  32. 泛型常用特点，List<String>能否转为List<Object>。
+  32， 泛型常用特点，List<String>能否转为List<Object>。
 
-  33. 解析XML的几种方式的原理与特点：DOM、SAX、PULL。
+  33， 解析XML的几种方式的原理与特点：DOM、SAX、PULL。
 
-  34. Java与C++对比。
+  34， Java与C++对比。
 
-  35. Java1.7与1.8新特性。
+  35， Java1.7与1.8新特性。
 
-  36. 设计模式：单例、工厂、适配器、责任链、观察者等等。
+  36， 设计模式：单例、工厂、适配器、责任链、观察者等等。
 
-  37. JNI的使用。
+  37， JNI的使用。
 
 ## JVM：
 
-  1. 内存模型以及分区，需要详细到每个区放什么。
+  1， 内存模型以及分区，需要详细到每个区放什么。
 
-  2. 堆里面的分区：Eden，survival from to，老年代，各自的特点。
+  2， 堆里面的分区：Eden，survival from to，老年代，各自的特点。
 
-  3. 对象创建方法，对象的内存分配，对象的访问定位。
+  3， 对象创建方法，对象的内存分配，对象的访问定位。
 
-  4. GC的两种判定方法：引用计数与引用链。
+  4， GC的两种判定方法：引用计数与引用链。
 
-  5. GC的三种收集方法：标记清除、标记整理、复制算法的原理与特点，分别用在什么地方，如果让你优化收集方法，有什么思路？
+  5， GC的三种收集方法：标记清除、标记整理、复制算法的原理与特点，分别用在什么地方，如果让你优化收集方法，有什么思路？
 
-  6. GC收集器有哪些？CMS收集器与G1收集器的特点。
+  6， GC收集器有哪些？CMS收集器与G1收集器的特点。
 
-  7. Minor GC与Full GC分别在什么时候发生？
+  7， Minor GC与Full GC分别在什么时候发生？
 
-  8. 几种常用的内存调试工具：jmap、jstack、jconsole。
+  8， 几种常用的内存调试工具：jmap、jstack、jconsole。
 
-  9. 类加载的五个过程：加载、验证、准备、解析、初始化。
+  9， 类加载的五个过程：加载、验证、准备、解析、初始化。
 
-  10. 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader。
+  10， 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader。
 
-  11. 分派：静态分派与动态分派。
+  11， 分派：静态分派与动态分派。
 
   >（来源：面试心得与总结---BAT、网易、蘑菇街）
 
@@ -336,10 +336,14 @@ Goto—java中的保留字，现在没有在java中使用。
 
 # 五
 
-* [2019年java面试官最喜欢问的问题](https://mparticle.uc.cn/article.html?app=smds-iflow&uc_param_str=frdnsnpfvecpntnwprdssskt&zzd_from=smds-iflow&&dl_type=2&cid=0&activity=1&activity2=1&enuid=AAOmWUw97AI%2Bn3k96Io2MMZ7&from_sm=ucframe#!wm_aid=01a2d9a2e7c24ee3bc45c52644cc0bd6!!wm_id=18311593dec74123a9084e509f1c9d49!!recoid=800c6a9d6a9fb3d46997254709d70a04)
+100+经典Java面试题及答案解析
 
-* [java面试问题有哪些](https://mparticle.uc.cn/article.html?app=smds_iflow&uc_param_str=frdnsnpfvecpntnwprdssskt&zzd_from=smds_iflow&&dl_type=2&from_sm=ucframe#!wm_aid=57af5838889643b4b6be932ae3b40342!!wm_id=8b726e77bfe844f28240c916acf1cb6a!!recoid=800c6a9d6a9fb3d46997254709d70a04)
+# 参考
 
-* [100+经典Java面试题及答案解析](www.codeceo.com/article/100-java-interview-question.html)
+  * [2019年java面试官最喜欢问的问题](https://mparticle.uc.cn/article.html?app=smds-iflow&uc_param_str=frdnsnpfvecpntnwprdssskt&zzd_from=smds-iflow&&dl_type=2&cid=0&activity=1&activity2=1&enuid=AAOmWUw97AI%2Bn3k96Io2MMZ7&from_sm=ucframe#!wm_aid=01a2d9a2e7c24ee3bc45c52644cc0bd6!!wm_id=18311593dec74123a9084e509f1c9d49!!recoid=800c6a9d6a9fb3d46997254709d70a04)
 
-* [最近面试 Java 后端开发的感受|知乎](https://zhuanlan.zhihu.com/p/63897241)
+  * [java面试问题有哪些](https://mparticle.uc.cn/article.html?app=smds_iflow&uc_param_str=frdnsnpfvecpntnwprdssskt&zzd_from=smds_iflow&&dl_type=2&from_sm=ucframe#!wm_aid=57af5838889643b4b6be932ae3b40342!!wm_id=8b726e77bfe844f28240c916acf1cb6a!!recoid=800c6a9d6a9fb3d46997254709d70a04)
+
+  * [100+经典Java面试题及答案解析](www.codeceo.com/article/100-java-interview-question.html)
+
+  * [最近面试 Java 后端开发的感受|知乎](https://zhuanlan.zhihu.com/p/63897241)
