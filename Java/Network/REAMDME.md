@@ -1,3 +1,8 @@
+# jsp获取当前文件的文件名
+System.out.println(request.getRequestURI());
+System.out.println(request.getRequestURL());
+System.out.println(request.getQueryString());
+
 # java实现HTTP请求的三种方式
 
 目前JAVA实现HTTP请求的方法用的最多的有两种：一种是通过HTTPClient这种第三方的开源框架去实现。HTTPClient对HTTP的封装性比较不错，通过它基本上能够满足我们大部分的需求，HttpClient3.1 是 org.apache.commons.httpclient下操作远程 url的工具包，虽然已不再更新，但实现工作中使用httpClient3.1的代码还是很多，HttpClient4.5是org.apache.http.client下操作远程 url的工具包，最新的；另一种则是通过HttpURLConnection去实现，HttpURLConnection是JAVA的标准类，是JAVA比较原生的一种实现方式。
