@@ -101,6 +101,11 @@
  --对用户sam_gdcz31授权
  grant connect,resource,dba to sam_gdcz31 with admin option;
  ```
+* 增加最大连接数
+ ```sql,oracle
+ --增加最大连接数(这句可能要重启生效)
+ alter system set processes = 500 scope = spfile;
+```
 
 * oracle 查询表名以及表的列名
 
