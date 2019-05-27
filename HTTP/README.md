@@ -1,30 +1,5 @@
-# 七层协议
+* [OSI 七层协议](https://github.com/WenzelLin/knowledge-base/blob/master/Internet/OSI.md)
 
-* 应用层
-
-* 表示层
-
-* 会话层
-
-* 传输层
-
-* 网络层
-
-* 链路层
-
-* 物理层
-
-# 五层模型
-
-* 应用层
-
-* 传输层
-
-* 网络层
-
-* 链路层
-
-* 物理层
-
+* [TCP/IP 五层模型](https://github.com/WenzelLin/knowledge-base/blob/master/Internet/TCP-IP.md)
 
 # TCP UDP 的区别
