@@ -20,6 +20,31 @@
   
 # 常用语句
 
+* 表空间
+
+ ```sql,oracle
+ --表空间（sam_gdcz31）
+ CREATE TABLESPACE sam_gdcz31 DATAFILE 
+ 'D:/app/Administrator/oradata/sct1/sam_gdcz31.DBF' SIZE 50M REUSE autoextend on MAXSIZE 30000M, 
+ 'D:/app/Administrator/oradata/sct1/sam_gdcz31_2.DBF' SIZE 50M REUSE autoextend on MAXSIZE 30000M, 
+ 'D:/app/Administrator/oradata/sct1/sam_gdcz31_3.DBF' SIZE 50M REUSE autoextend on MAXSIZE 30000M 
+ EXTENT MANAGEMENT LOCAL AUTOALLOCATE;
+ ```
+ 
+* 创建用户
+
+ ```sql,oracle
+ --创建用户
+ create user sam_gdcz31 identified by sam_gdcz31 default tablespace sam_gdcz31 temporary tablespace temp;
+ ```
+ 
+* 用户授权
+
+ ```sql,oracle
+ --对用户sam_gdcz31授权
+ grant connect,resource,dba to sam_gdcz31 with admin option;
+ ```
+
 * oracle 查询表名以及表的列名
 
   oracle 查询表名以及表的列名的代码。
