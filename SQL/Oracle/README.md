@@ -1,3 +1,60 @@
+# TNS
+
+监听器是Oracle基于服务器端的一种网络服务，主要用于监听客户端向数据库服务器端提出的连接请求。既然是基于服务器端的服务，那么它也只存在于数据库服务器端，进行监听器的设置也是在数据库服务器端完成的。
+ 
+* 使用Net Manager工具配置监听服务
+
+  我们登录oracle数据的时候可能会经常遇到:TNS 无监听程序，或者安装好Plsql等工具后发现，database选项为空白。
+
+  究其原因，一般都是因为监听程序未配置的问题。
+
+  Net Manager这个工具是oracle客户端程序自带的，只要你安装oracle客户端一般都有。
+ 
+* 直接修改tnsnames.oRA文件
+
+  Oracle客户端中一般有两个tnsnames.oRA文件，配置监听要修改的是Oracle客户端家目下的network/admin/tnsnames.oRA。
+
+  例如：
+
+  D:\app\shaiya\product\11.2.0\client_1\network\admin\tnsnames.oRA
+
+  如果实在找不到的话，可以直接到Oracle客户端安装磁盘，进行文件搜索“*.ora”或者“tnsnames.ora”。
+
+  新安装的客户端如果没有配置过监听，admin目录下可能没有tnsnames.oRA这个文件，但是admin\sample\tnsnames.oRA有，我们可以把sample目下的文件复制一份到admin目录下。
+
+  然后，以记事本的方式打开admin目录下的tnsnames.oRA，删除全部内容，并安装下面的格式想里面写入网络服务名、传输协议、IP地址、端口和数据库名。
+
+  ------------------------------线下为配置文件内容-----------------------------ORCL_192.168.8.250 =         
+  ```txt
+        (DESCRIPTION =
+
+            (ADDRESS_LIST =
+
+                (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.8.250)(PORT = 1521))    
+
+            )
+
+            (CONNECT_DATA =
+
+                  (SERVICE_NAME = orcl)    
+
+             )
+
+         )
+  ```
+  ------------------------------线上为配置文件内容-----------------------------
+
+  #ORCL_192.168.8.250为网络服务名也叫数据库别名。
+
+  #TCP为连接协议、192.168.8.250为服务器IP、1521为服务端口。
+
+  #orcl为库名。
+
+  注意事项：
+
+  我们直接选择保存文件可能保存不了，可以先保存到别的位置，然后再复制过来替换掉历史的tnsnames.oRA。
+       
+ 
 # 索引
 
   * [oracle索引，索引的建立、修改、删除](https://www.cnblogs.com/djcsch2001/articles/1823459.html)
