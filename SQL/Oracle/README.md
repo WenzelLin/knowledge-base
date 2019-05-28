@@ -205,3 +205,5 @@ show parameter deferred_segment_creation;
 # 参考
 
   * [Oracle 11g的Deferred Segment Creation](https://www.cnblogs.com/ningvsban/p/3603897.html)
+  
+  * [Oracle 11gR2 deferred segment creation 与 exp/imp 说明](https://www.cndba.cn/dave/article/1387)
