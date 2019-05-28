@@ -1,3 +1,25 @@
+# Deferred Segment Creation
+
+在Oracle中，“表空间（Tablespace）、段（Segment）、分区（Extent）和块（Block）”是逻辑存储结构的四个层次。对数据表而言，通常是由一个或者多个段对象（分区表）Segment组成。也就是说，在数据表创建的时刻，Oracle会创建一个数据段Segment对象与之对应。
+
+当Segment创建之后，Oracle空间管理机制会根据需要分配至少一个extent作为初始化。每个extent的大小需要根据不同tablespace进行配置。但是在11g之前，数据表的创建同时，就发生了空间Segment分配的过程。但是在Oracle 11g中，引入了Deferred Segment Creation特性。
+  
+这就是在Oracle 11g中引入的延迟段生成。一个数据表，如果刚刚创建出来的时候没有数据加入。Oracle是不会为这个对象创建相应的段结构，也就不会分配对应的空间。
+
+使用DDL语句可以获取到创建数据表的所有语句参数，包括默认参数。其中，我们发现了一个在过去版本中没有参数“SEGMENT CREATION DEFERRED”，该参数就表示在数据表创建中使用延迟段生成。
+
+Oracle推出Deferred Segment Creation的出发点很单纯，就是出于对象空间节省的目的。如果一个空表从来就没有使用过，创建segment对象，分配空间是“不合算”的，所以提出推迟段创建的时间点。
+
+如果deferred_segment_creation为true，那么数据库中空表就不会立即分配extent，即不占数据空间，当我们使用exp导出数据库的时候，这些空表也会无法导出。如果想把空表也一起导出，我们可以参考[Oracle 11g导出空表、少表的解决办法](http://www.cnblogs.com/ningvsban/p/3603678.html)这篇文章。
+
+```sql,oracle
+--设置deferred_segment_creation参数
+alter system set deferred_segment_creation=false;
+
+--查看参数信息
+show parameter deferred_segment_creation;
+```
+
 # TNS
 
 监听器是Oracle基于服务器端的一种网络服务，主要用于监听客户端向数据库服务器端提出的连接请求。既然是基于服务器端的服务，那么它也只存在于数据库服务器端，进行监听器的设置也是在数据库服务器端完成的。
@@ -179,3 +201,7 @@
   AND s.username IS NOT NULL
   ORDER BY sid;
   ```
+  
+# 参考
+
+  * [Oracle 11g的Deferred Segment Creation](https://www.cnblogs.com/ningvsban/p/3603897.html)
