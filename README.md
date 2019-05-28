@@ -2,6 +2,8 @@
 
 记录学习到的知识
 
+* github 编辑页面中 `Alt+鼠标左键` 可以多行编辑
+
 * [JAVA](https://github.com/WenzelLin/knowledge-base/blob/master/Java/README.md)
 
 * [Spring](https://github.com/WenzelLin/knowledge-base/blob/master/Spring/README.md)
