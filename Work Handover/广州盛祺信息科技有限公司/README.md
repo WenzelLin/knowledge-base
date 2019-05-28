@@ -62,6 +62,7 @@
 ### 报表离线数据下载接收 17-18年
 
 ### 资产Excel导入
+  页面提供两个按钮，一个用于下载服务器上现成的xls文件，一个用于下载根据配置文件[AssetXlsSetting.xml](https://github.com/WenzelLin/knowledge-base/blob/master/Work%20Handover/%E5%B9%BF%E5%B7%9E%E7%9B%9B%E7%A5%BA%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/AssetXlsSetting.xml)动态生成的xls文件。`AssetXlsSetting.xml`文件的说明见文件内的注释。
 
 ### 系统表维护
 
@@ -74,4 +75,4 @@
   [禅道|2991 [重要]数据同步导入时，部门表的需要作为非业务表进行特殊处理](http://192.168.200.90:8999/zentao/bug-view-2991.html)
 
 ### 资产处置接收
-
+  资产处置接收时，资产数据的校验是直接调用资产入库表的，也就是说页面的错误提示与资产的校验息息相关。
