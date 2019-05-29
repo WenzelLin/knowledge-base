@@ -6,6 +6,335 @@ v$sqlarea：存储的SQL 和一些相关的信息，比如累计的执行次数�
 
 v$sql：内存共享SQL区域中已经解析的SQL语句。（即时）
 
+## SQL 优化
+  
+### 5. 选择最有效率的表名顺序
+
+  * ORACLE的解析器按照从右到左的顺序处理FROM子句中的表名，因此FROM子句中写在最后的表(基础表 driving table)将被最先处理。
+  
+  * 当ORACLE处理多个表时，会运用排序及合并的方式连接它们。首先，扫描第一个表(FROM子句中最后的那个表)并对记录进行派序，然后扫描第二个表(FROM子句中最后第二个表)，最后将所有从第二个表中检索出的记录与第一个表中合适记录进行合并。
+  
+  * 只在基于规则的优化器中有效。
+
+### 6.Where子句中的连接顺序
+
+Oracle采用自下而上的顺序解析WHERE子句。 根据这个原理,表之间的连接必须写在其他WHERE条件之前，那些可以过滤掉最大数量记录的条件必须写在WHERE子句的末尾。
+
+```sql,oracle
+/*低效,执行时间156.3秒*/
+SELECT … 
+  FROM EMP E
+WHERE  SAL > 50000
+     AND  JOB = 'MANAGER'
+     AND  25 < (SELECT COUNT(*) FROM EMP
+                         WHERE MGR = E.EMPNO);
+
+
+/*高效,执行时间10.6秒*/
+SELECT … 
+  FROM EMP E
+WHERE 25 < (SELECT COUNT(*) FROM EMP
+                        WHERE MGR=E.EMPNO)
+     AND SAL > 50000
+     AND JOB = 'MANAGER';
+```
+
+### 7. SELECT子句中避免使用“*”
+
+  * Oracle在解析SQL语句的时候，对于“*”将通过查询数据库字典来将其转换成对应的列名。
+  * 如果在Select子句中需要列出所有的Column时，建议列出所有的Column名称，而不是简单的用“*”来替代，这样可以减少多于的数据库查询开销。
+
+### 10. 使用Truncate而非Delete
+
+  * Delete表中记录的时候，Oracle会在Rollback段中保存删除信息以备恢复。Truncate删除表中记录的时候不保存删除信息，不能恢复。因此Truncate删除记录比   
+  * Delete快，而且占用资源少。
+  
+  * 删除表中记录的时候，如果不需要恢复的情况之下应该尽量使用Truncate而不是Delete。
+  
+  * Truncate仅适用于删除全表的记录。
+
+### 12. 计算记录条数
+
+```sql,oracle
+Select count(*) from tablename; 
+Select count(1) from tablename; 
+Select max(rownum) from tablename;
+```
+
+一般认为，在没有索引的情况之下，第一种方式最快。 如果有索引列，使用索引列当然最快。
+ 
+### 14.减少对表的查询操作
+
+在含有子查询的SQL语句中，要注意减少对表的查询操作。
+
+```sql,oracle
+--低效：
+SELECT TAB_NAME  FROM TABLES
+WHERE TAB_NAME =(SELECT TAB_NAME
+                           FROM TAB_COLUMNS
+                         WHERE VERSION = 604)
+     AND DB_VER =(SELECT DB_VER
+                           FROM TAB_COLUMNS
+                         WHERE VERSION = 604);
+
+--高效：
+SELECT TAB_NAME  FROM TABLES
+WHERE (TAB_NAME，DB_VER)=
+             (SELECT TAB_NAME，DB_VER
+                  FROM TAB_COLUMNS
+                WHERE VERSION = 604);
+```                
+
+### 18. 用表连接替换EXISTS
+
+通常来说 ，采用表连接的方式比EXISTS更有效率 。
+
+```sql,oracle
+--低效：
+SELECT ENAME
+   FROM EMP E
+WHERE EXISTS (SELECT 'X' 
+                  FROM DEPT
+              WHERE DEPT_NO = E.DEPT_NO
+                           AND DEPT_CAT = 'A');
+--高效：
+SELECT ENAME
+   FROM DEPT D，EMP E
+WHERE E.DEPT_NO = D.DEPT_NO
+     AND DEPT_CAT = 'A';
+```
+
+### 19. 用EXISTS替换DISTINCT 
+
+当提交一个包含对多表信息(比如部门表和雇员表)的查询时，避免在SELECT子句中使用DISTINCT。 一般可以考虑用EXIST替换。
+
+EXISTS 使查询更为迅速，因为RDBMS核心模块将在子查询的条件一旦满足后，立刻返回结果。
+
+```sql,oracle
+--低效：
+SELECT DISTINCT DEPT_NO，DEPT_NAME
+       FROM DEPT D，EMP E
+    WHERE D.DEPT_NO = E.DEPT_NO;
+
+--高效：
+SELECT DEPT_NO，DEPT_NAME
+      FROM DEPT D
+    WHERE EXISTS (SELECT ‘X’
+                  FROM EMP E
+                WHERE E.DEPT_NO = D.DEPT_NO);
+```
+
+### 20. 识别低效的SQL语句
+
+下面的SQL工具可以找出低效SQL ：
+
+```sql,oracle
+SELECT EXECUTIONS, DISK_READS, BUFFER_GETS,
+   ROUND ((BUFFER_GETS-DISK_READS)/BUFFER_GETS, 2) Hit_radio,
+   ROUND (DISK_READS/EXECUTIONS, 2) Reads_per_run,
+   SQL_TEXT
+FROM   V$SQLAREA
+WHERE  EXECUTIONS>0
+AND     BUFFER_GETS > 0 
+AND (BUFFER_GETS-DISK_READS)/BUFFER_GETS < 0.8 
+ORDER BY 4 DESC
+```
+另外也可以使用SQL Trace工具来收集正在执行的SQL的性能状态数据，包括解析次数，执行次数，CPU使用时间等 。
+
+### 23. 用索引提高效率
+
+  * （1）特点
+
+    优点： 提高效率 主键的唯一性验证
+
+    代价： 需要空间存储 定期维护
+
+    ```sql,oracle
+    --重构索引： 
+    ALTER INDEX <INDEXNAME> REBUILD <TABLESPACENAME>
+    ```
+
+  * （2）Oracle对索引有两种访问模式
+
+    索引唯一扫描 (Index Unique Scan)
+    
+    索引范围扫描 (Index Range Scan)
+  
+  * （3）基础表的选择
+
+    基础表(Driving Table)是指被最先访问的表(通常以全表扫描的方式被访问)。 根据优化器的不同，SQL语句中基础表的选择是不一样的。
+    
+    如果你使用的是CBO (COST BASED OPTIMIZER)，优化器会检查SQL语句中的每个表的物理大小，索引的状态，然后选用花费最低的执行路径。
+    
+    如果你用RBO (RULE BASED OPTIMIZER)， 并且所有的连接条件都有索引对应，在这种情况下，基础表就是FROM 子句中列在最后的那个表。
+
+  * （4）多个平等的索引
+
+    当SQL语句的执行路径可以使用分布在多个表上的多个索引时，ORACLE会同时使用多个索引并在运行时对它们的记录进行合并，检索出仅对全部索引有效的记录。
+
+    在ORACLE选择执行路径时，唯一性索引的等级高于非唯一性索引。然而这个规则只有当WHERE子句中索引列和常量比较才有效。如果索引列和其他表的索引类相比较。这种子句在优化器中的等级是非常低的。
+    
+    如果不同表中两个相同等级的索引将被引用，FROM子句中表的顺序将决定哪个会被率先使用。 FROM子句中最后的表的索引将有最高的优先级。
+
+    如果相同表中两个相同等级的索引将被引用，WHERE子句中最先被引用的索引将有最高的优先级。
+  
+  * （5）等式比较优先于范围比较
+
+    DEPTNO上有一个非唯一性索引，EMP_CAT也有一个非唯一性索引。
+
+    ```sql,oracle
+    SELECT ENAME
+         FROM EMP
+         WHERE DEPTNO > 20
+         AND EMP_CAT = ‘A’;
+    ```
+
+    这里只有EMP_CAT索引被用到,然后所有的记录将逐条与DEPTNO条件进行比较. 执行路径如下:
+
+    TABLE ACCESS BY ROWID ON EMP
+
+    INDEX RANGE SCAN ON CAT_IDX
+
+    即使是唯一性索引，如果做范围比较，其优先级也低于非唯一性索引的等式比较。
+
+  * （6）不明确的索引等级
+
+    当ORACLE无法判断索引的等级高低差别，优化器将只使用一个索引,它就是在WHERE子句中被列在最前面的。
+
+    DEPTNO上有一个非唯一性索引，EMP_CAT也有一个非唯一性索引。
+
+    ```sql,oracle
+    SELECT ENAME
+         FROM EMP
+         WHERE DEPTNO > 20
+         AND EMP_CAT > ‘A’;
+    ```
+
+    这里, ORACLE只用到了DEPT_NO索引. 执行路径如下:
+
+    TABLE ACCESS BY ROWID ON EMP
+
+    INDEX RANGE SCAN ON DEPT_IDX
+
+  * （7）强制索引失效
+
+    如果两个或以上索引具有相同的等级，你可以强制命令ORACLE优化器使用其中的一个(通过它,检索出的记录数量少) 。
+
+    ```sql,oracle
+    SELECT ENAME
+    FROM EMP
+    WHERE EMPNO = 7935  
+    AND DEPTNO + 0 = 10    /*DEPTNO上的索引将失效*/
+    AND EMP_TYPE || ‘’ = ‘A’  /*EMP_TYPE上的索引将失效*/
+    ```
+
+  * （8）避免在索引列上使用计算
+
+    WHERE子句中，如果索引列是函数的一部分。优化器将不使用索引而使用全表扫描。
+
+    ```sql,oracle
+    --低效：
+    SELECT …
+      FROM DEPT
+    WHERE SAL * 12 > 25000;
+    
+    --高效：
+    SELECT …
+      FROM DEPT
+    WHERE SAL  > 25000/12;
+    ```
+
+  * （9）自动选择索引
+
+    如果表中有两个以上（包括两个）索引，其中有一个唯一性索引，而其他是非唯一性索引。在这种情况下，ORACLE将使用唯一性索引而完全忽略非唯一性索引。
+
+    ```sql,oracle
+    SELECT ENAME
+      FROM EMP
+    WHERE EMPNO = 2326  
+         AND DEPTNO  = 20 ; 
+    ```
+    
+    这里，只有EMPNO上的索引是唯一性的，所以EMPNO索引将用来检索记录。
+
+    TABLE ACCESS BY ROWID ON EMP
+
+    INDEX UNIQUE SCAN ON EMP_NO_IDX
+
+  * （10）避免在索引列上使用NOT
+
+    通常，我们要避免在索引列上使用NOT，NOT会产生在和在索引列上使用函数相同的影响。当ORACLE遇到NOT，它就会停止使用索引转而执行全表扫描。
+
+    ```sql,oracle
+    --低效: (这里，不使用索引)
+       SELECT …
+         FROM DEPT
+       WHERE NOT DEPT_CODE = 0;
+    --高效：(这里，使用了索引)
+       SELECT …
+         FROM DEPT
+       WHERE DEPT_CODE > 0
+    ```
+    
+### 33. 几种不能使用索引的WHERE子句 
+
+  * （1）下面的例子中，'!=' 将不使用索引 ，索引只能告诉你什么存在于表中，而不能告诉你什么不存在于表中。
+
+  ```sql,oracle
+  --不使用索引：
+  SELECT ACCOUNT_NAME
+        FROM TRANSACTION
+      WHERE AMOUNT !=0;
+
+  --使用索引：
+  SELECT ACCOUNT_NAME
+        FROM TRANSACTION
+      WHERE AMOUNT > 0;
+  ```
+
+  * （2）下面的例子中，'||'是字符连接函数。就象其他函数那样，停用了索引。
+
+  ```sql,oracle
+  --不使用索引：
+  SELECT ACCOUNT_NAME，AMOUNT
+    FROM TRANSACTION
+  WHERE ACCOUNT_NAME||ACCOUNT_TYPE='AMEXA';
+
+  --使用索引：
+  SELECT ACCOUNT_NAME，AMOUNT
+    FROM TRANSACTION
+  WHERE ACCOUNT_NAME = 'AMEX'
+       AND ACCOUNT_TYPE='A';
+  ```
+
+  * （3）下面的例子中，'+'是数学函数。就象其他数学函数那样，停用了索引。
+
+  ```sql,oracle
+  --不使用索引：
+  SELECT ACCOUNT_NAME，AMOUNT
+    FROM TRANSACTION
+  WHERE AMOUNT + 3000 >5000;
+
+  --使用索引：
+  SELECT ACCOUNT_NAME，AMOUNT
+  FROM TRANSACTION
+  WHERE AMOUNT > 2000;
+  ```
+
+  * （4）下面的例子中，相同的索引列不能互相比较，这将会启用全表扫描。
+
+  ```sql,oracle
+  --不使用索引：
+  SELECT ACCOUNT_NAME, AMOUNT
+  FROM TRANSACTION
+  WHERE ACCOUNT_NAME = NVL(:ACC_NAME, ACCOUNT_NAME);
+
+  --使用索引：
+  SELECT ACCOUNT_NAME，AMOUNT
+  FROM TRANSACTION
+  WHERE ACCOUNT_NAME LIKE NVL(:ACC_NAME, '%');
+  ```
+
 # Inner Left Right Full join
 
 # In 和 Exists
@@ -236,3 +565,5 @@ show parameter deferred_segment_creation;
   * [Oracle 查询技巧与优化（二） 多表查询](https://blog.csdn.net/wlwlwlwl015/article/details/52096120)
 
   * [oracle中查找执行效率低下的SQL](https://blog.csdn.net/haiross/article/details/43482991)
+  
+  * [Oracle SQL性能优化的40条军规](https://www.cnblogs.com/zjfjava/p/7092503.html)
