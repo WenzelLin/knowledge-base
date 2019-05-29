@@ -15,6 +15,11 @@
  [新会计制度开发要点 3.0.docx](https://github.com/WenzelLin/knowledge-base/blob/master/Work%20Handover/%E5%B9%BF%E5%B7%9E%E7%9B%9B%E7%A5%BA%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/%E6%96%B0%E4%BC%9A%E8%AE%A1%E5%88%B6%E5%BA%A6%E5%BC%80%E5%8F%91%E8%A6%81%E7%82%B9%203.0.docx)
 
 ### 项目库
+ 涉及到对接`广财采购系统`，对接配置见[docker.properties](https://github.com/WenzelLin/knowledge-base/blob/master/Work%20Handover/%E5%B9%BF%E5%B7%9E%E7%9B%9B%E7%A5%BA%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/docker.properties)、[dockerAchieve.properties](https://github.com/WenzelLin/knowledge-base/blob/master/Work%20Handover/%E5%B9%BF%E5%B7%9E%E7%9B%9B%E7%A5%BA%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/dockerAchieve.properties)
+ 
+ 下图为项目库需要对接采购系统的功能：
+ ![项目库-采购-广财](https://github.com/WenzelLin/knowledge-base/blob/master/Work%20Handover/%E5%B9%BF%E5%B7%9E%E7%9B%9B%E7%A5%BA%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/%E9%A1%B9%E7%9B%AE%E5%BA%93-%E9%87%87%E8%B4%AD-%E5%B9%BF%E8%B4%A2.png?raw=true)
+ 
  [6.0项目库管理功能设计V1.0.0(1).doc](https://github.com/WenzelLin/knowledge-base/blob/master/Work%20Handover/%E5%B9%BF%E5%B7%9E%E7%9B%9B%E7%A5%BA%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/6.0%E9%A1%B9%E7%9B%AE%E5%BA%93%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1V1.0.0(1).doc)
 
 ### 内控-致远OA
