@@ -1,3 +1,11 @@
+# SQL 效率
+
+v$sqltext：存储的是完整的SQL,SQL被分割
+
+v$sqlarea：存储的SQL 和一些相关的信息，比如累计的执行次数，逻辑读，物理读等统计信息（统计）
+
+v$sql：内存共享SQL区域中已经解析的SQL语句。（即时）
+
 # Inner Left Right Full join
 
 # In 和 Exists
@@ -226,3 +234,5 @@ show parameter deferred_segment_creation;
   * [Oracle 11gR2 deferred segment creation 与 exp/imp 说明](https://www.cndba.cn/dave/article/1387)
   
   * [Oracle 查询技巧与优化（二） 多表查询](https://blog.csdn.net/wlwlwlwl015/article/details/52096120)
+
+  * [oracle中查找执行效率低下的SQL](https://blog.csdn.net/haiross/article/details/43482991)
