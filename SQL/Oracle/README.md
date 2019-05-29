@@ -1,3 +1,11 @@
+# Inner Left Right Full join
+
+# In 和 Exists
+
+# Not In 和 Not Exists
+
+  如果NOT IN关键字后的子查询包含空值，则整体查询都会返回空，所以这类查询务必要加非NULL判断条件。
+
 # UNION与UNION ALL的区别
 
   UNION会自动去除多个结果集合中的重复结果，而UNION ALL则将所有的结果全部显示出来，不管是不是重复。
