@@ -1,3 +1,12 @@
+# UNION与UNION ALL的区别
+
+  UNION会自动去除多个结果集合中的重复结果，而UNION ALL则将所有的结果全部显示出来，不管是不是重复。
+  
+  UNION会对结果集进行默认规则的排序，而UNION ALL则不会进行任何排序。
+  
+  所以效率方面很明显UNION ALL要高于UNION，因为它少去了排序和去重的工作。当然还有一点需要注意，UNION和UNION ALL也可以用来合并不同的两张表的结果集，但是字段类型和个数需要匹配
+
+
 # Deferred Segment Creation
 
 在Oracle中，“表空间（Tablespace）、段（Segment）、分区（Extent）和块（Block）”是逻辑存储结构的四个层次。对数据表而言，通常是由一个或者多个段对象（分区表）Segment组成。也就是说，在数据表创建的时刻，Oracle会创建一个数据段Segment对象与之对应。
@@ -207,3 +216,5 @@ show parameter deferred_segment_creation;
   * [Oracle 11g的Deferred Segment Creation](https://www.cnblogs.com/ningvsban/p/3603897.html)
   
   * [Oracle 11gR2 deferred segment creation 与 exp/imp 说明](https://www.cndba.cn/dave/article/1387)
+  
+  * [Oracle 查询技巧与优化（二） 多表查询](https://blog.csdn.net/wlwlwlwl015/article/details/52096120)
