@@ -1,5 +1,8 @@
-## DOS命令
- * [DOS 常用命令](https://github.com/WenzelLin/knowledge-base/blob/master/Windows/DOS.md)
+## 常用命令
+
+  * [windows常用命令](https://www.cnblogs.com/kekec/p/3662125.html)
+
+  * [DOS 常用命令](https://github.com/WenzelLin/knowledge-base/blob/master/Windows/DOS.md)
 
 ## 常用快捷键
 
