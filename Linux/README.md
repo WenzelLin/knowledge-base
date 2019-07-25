@@ -5,3 +5,5 @@
 * [linux下查看已安装的软件与卸载](https://blog.csdn.net/qq_22075041/article/details/78855849)
 
 * [Ubuntu 查看文件以及磁盘空间大小管理](https://www.cnblogs.com/adolfmc/archive/2013/02/16/2913801.html)
+
+* [linux 创建多级目录 mkdir -p](https://blog.csdn.net/helllochun/article/details/41543907)
