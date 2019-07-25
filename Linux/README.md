@@ -7,3 +7,5 @@
 * [Ubuntu 查看文件以及磁盘空间大小管理](https://www.cnblogs.com/adolfmc/archive/2013/02/16/2913801.html)
 
 * [linux 创建多级目录 mkdir -p](https://blog.csdn.net/helllochun/article/details/41543907)
+
+* [linux tar (打包.压缩.解压缩)命令说明 | tar如何解压文件到指定的目录？](https://www.cnblogs.com/52linux/archive/2012/03/04/2379738.html)
