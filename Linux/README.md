@@ -33,3 +33,5 @@
 * date 查看当前日期
 
 * top 查看监控
+
+* vi undo和redo--普通模式下，按`u'为undo，按`ctrl+r`为redo
