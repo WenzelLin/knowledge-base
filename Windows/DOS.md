@@ -1,5 +1,23 @@
 ## dos命令 batch文件
 
+* 比较运算符
+
+  QUE(==) NQE(!=) LSS(<) LEQ(<=) GTR(>) GEQ(>=)
+
+* if
+  
+  if expression (do something) else if expression (do something) else (do something)
+
+* 获取输入
+
+  获取用户输入并赋值给变量a
+  
+  set /p a=请输入：
+  
+  取消变量定义
+  
+  set somevalue=
+  
 * for
 
 * net
@@ -69,3 +87,7 @@
     - 批处理文件中可引用的参数为%0~%9，%0是指批处理文件的本身，也可以说是一个外部命令；%1~%9是批处理参数，也称形参
     
     - [.bat批处理（二）：%0 %1——给批处理脚本传递参数](https://blog.csdn.net/albertsh/article/details/52788106)
+    
+ # 参考
+ 
+  * [DOS/BAT批处理if exist else 语句的几种用法](https://www.cnblogs.com/yang-hao/p/6003149.html)
