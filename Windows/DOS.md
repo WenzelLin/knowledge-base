@@ -1,5 +1,21 @@
 ## dos命令 batch文件
 
+* sc
+  
+  配置服务启动方式的命令行格式：
+  
+  sc config 服务名称 start= auto（设置服务为自动启动） 
+  
+  sc config 服务名称 start= demand（设置服务为手动启动） 
+  
+  sc config 服务名称 start= disabled（设置服务为禁用）
+  
+  查看帮助：sc help config
+  
+  停止/启动服务的命令行格式:
+  
+  sc stop/start 服务名称 
+
 * 比较运算符
 
   QUE(==) NQE(!=) LSS(<) LEQ(<=) GTR(>) GEQ(>=)
@@ -28,6 +44,8 @@
   
   * net use
   
+    登录时需要输入密码，查看帮助：net help use
+    
     - [net use错误原因解决(精辟)（转）](https://www.cnblogs.com/zhuimengle/p/6030414.html)
 
 * cacls
@@ -91,3 +109,5 @@
  # 参考
  
   * [DOS/BAT批处理if exist else 语句的几种用法](https://www.cnblogs.com/yang-hao/p/6003149.html)
+  
+  * [使用批处理设置、启动和停止服务](https://blog.csdn.net/pashine/article/details/1845036)
