@@ -1,5 +1,11 @@
 ## dos命令 batch文件
 
+* rd
+  
+  删除目录，查看帮助：help rd
+  
+  rd /s /q D:\test\ 删除“D:\test\”目录下所有文件（子目录也删除）
+
 * call 
   
   从一个bat文件里调用另一个bat时，如果不用call命令，则另一个bat执行完后，不会返回。
@@ -39,6 +45,16 @@
   set somevalue=
   
 * for
+
+  查看帮助：for --help
+
+* forfiles
+
+  查看帮助：forfiles --help
+  
+  删除过期目录：
+  
+  forfiles /p "D:\test\" /m * /d -30 /c "cmd /c rd /s /q @path && 成功删除空目录@path.
 
 * net
   
