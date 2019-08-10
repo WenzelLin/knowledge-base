@@ -1,5 +1,10 @@
+# Hibernate
 
-# Hibernate对象状态
+## 报错记录
+
+  * [错误记录（一）Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister报错解决办法](https://blog.csdn.net/weixin_36380516/article/details/52876204)
+
+## Hibernate对象状态
 
 * Transient 临时
 
@@ -13,7 +18,7 @@
 
   Detached状态的对象，与数据库中具体的数据对应，但脱离session实例的管理。
 
-## 三状态之间转换
+### 三状态之间转换
 
 * Null——new——>Transient
 
@@ -29,15 +34,15 @@
 
 * Detached——update,saveOrUpdate,lock,merge,replicate——Persistent 
 
-## get(),load()方法的区别
+### get(),load()方法的区别
 
   当要查找的对象不存在时，get()方法返回null，load()方法抛出异常
 
-## update(),lock()方法的区别
+### update(),lock()方法的区别
 
   Detached对象用update()与session重新关联变成Persistent状态时，关联前后对对象进行的修改，在commit时都会更新到数据库；而用lock()与session重新关联，在commit的时候，只会更新lock()修改的数据到数据库。
 
-# Hibernate中5个核心接口
+## Hibernate中5个核心接口
 
 * Configuration 接口
 
@@ -60,7 +65,7 @@
   hibernate事务接口，封装了底层的事务操作。
 
 
-# Hibernate的5种锁模式
+## Hibernate的5种锁模式
 
 * LovkMode.NONE
 
@@ -82,7 +87,7 @@
 
   hibernate做insert，update，delete时，会自动使用该模式（内部使用）。
   
-# getHibernateTemplate()
+## getHibernateTemplate()
 
 spring 中获得由spring所配置的hibernate的操作对象,然后利用此对象进行，保存，修改和删除等操作，此方法是在配置了spring以后，hibernate由spring接管，不直接使用hibernate的session了 
 
