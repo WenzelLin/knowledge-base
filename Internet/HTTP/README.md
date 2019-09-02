@@ -4,6 +4,10 @@
 
 * Content-Security-Policy
 
-  -[Content Security Policy Level 3](https://w3c.github.io/webappsec-csp/)
+  default-src 'self';script-src 'self' 'unsafe-inline' 'unsafe-eval';script-src-elem 'self' 'unsafe-eval' 'unsafe-inline';style-src 'self' 'unsafe-inline'
   
 # TCP UDP 的区别
+
+
+# 参考
+  * [Content Security Policy Level 3](https://w3c.github.io/webappsec-csp/)
