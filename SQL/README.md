@@ -1,3 +1,6 @@
+* 字符集
+  oracle：select * from nls_database_parameters
+
 * 取模
 
   sqlserver：%
@@ -66,3 +69,5 @@ create table table_name_new as select * from table_name_old;
 * [oracle误删除数据的恢复方法](https://www.cnblogs.com/hqbhonker/p/3977200.html)
 
 * [oracle恢复删除的数据](https://www.cnblogs.com/kangxuebin/archive/2013/05/29/3106183.html)
+
+* [Oracle字符集的查看查询和Oracle字符集的设置修改](https://www.cnblogs.com/perilla/p/3873653.html)
