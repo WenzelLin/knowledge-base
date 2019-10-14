@@ -1,3 +1,45 @@
+* 游标
+  - SQL Server游标语句使用方法
+  ```
+    --声明一个游标 
+    DECLARE MyCursor CURSOR 
+    FOR SELECT TOP 5 FBookName,FBookCoding FROM TBookInfo//定义一个叫MyCursor的游标，存放for select 后的数据 
+
+    --打开一个游标 
+    OPEN MyCursor//即打开这个数据集 
+
+    --循环一个游标 
+    DECLARE @BookName nvarchar(2000),@BookCoding nvarchar(2000) 
+    FETCH NEXT FROM MyCursor INTO @BookName,@BookCoding//移动游标指向到第一条数据，提取第一条数据存放在变量中 
+    WHILE @@FETCH_STATUS =0//如果上一次操作成功则继续循环 
+    BEGIN 
+    print 'name'+@BookName 
+    FETCH NEXT FROM MyCursor INTO @BookName,@BookCoding//继续提下一行 
+    END 
+
+    --关闭游标 
+    CLOSE MyCursor 
+    --释放资源 
+    DEALLOCATE MyCursor 
+  ```
+
+  - oracle 快速游标
+  ```
+    BEGIN 
+      FOR cr in (查询语句) LOOP -- 循环
+        --逻辑语句 根据查询出来的结果集合
+      END LOOP;
+    END;
+    
+    例子：
+    --快速游标
+    begin 
+      for cr in (select tAssetwriteoffdetail.Awdpk, tAssetwriteoffdetail.Awdassetpk, (select Tassetregist.Assetregbarcode from Tassetregist where tAssetwriteoffdetail.Awdassetpk = Tassetregist.Assetregpk) AwdassetBarCode,tAssetwriteoffdetail.AWDNewAssetPK from tAssetwriteoffdetail where tAssetwriteoffdetail.AWDIsAccepted = 1) loop
+        update Tassetregist set AssetRegRemark = '资产原卡片编号为：' ||case when cr.awdassetbarcode is null or cr.awdassetbarcode = '' then cr.awdassetpk else cr.awdassetbarcode end || '，' || AssetRegRemark where Tassetregist.Assetregpk = cr.awdnewassetpk and AssetRegRemark like '%资产原属单位为%在系统接收生成！%';
+      end loop;
+    end; 
+  ```
+  
 * 字符集
   oracle：select * from nls_database_parameters
 
