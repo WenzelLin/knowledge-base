@@ -1,5 +1,7 @@
 # java 知识
 
+* [Java数字格式化](https://blog.csdn.net/zhengbo0/article/details/6967601)
+
 * [Schedule 定时器](https://github.com/WenzelLin/knowledge-base/blob/master/Java/Schedule(%E5%AE%9A%E6%97%B6%E5%99%A8).md)  
 
 * [Appelt](https://github.com/WenzelLin/knowledge-base/blob/master/Java/Applet.md)
