@@ -83,7 +83,10 @@ UML类图可以分为两大类型：
 </table>
 
 参考：
+
 [UML基础知识入门](https://blog.csdn.net/basycia/article/details/51834155)
+
+[UML类图关系（泛化 、继承、实现、依赖、关联、聚合、组合）](https://www.cnblogs.com/olvo/archive/2012/05/03/2481014.html)
 
 在线绘图工具  
 [Visual Paradigm Online](https://online.visual-paradigm.com/cn/)
