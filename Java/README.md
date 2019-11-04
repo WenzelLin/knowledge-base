@@ -21,6 +21,7 @@
 * 解决并发问题的几种方案 synchronized volatile final lock()
 
 * CXF调用
+
   CXF多次调用时，需要先清除上下文，否则会报错：
   ```
   com.sun.istack.internal.SAXException2: xxx.xxx.xxx is not known to this context
