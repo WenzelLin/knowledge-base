@@ -1,3 +1,58 @@
+* Sql Server 与 Oracle 的字段类型对应
+  
+  * Sql Server 2000 转换为Oracle 10g
+  
+    |列名|SqlServer数据类型|SqlServer长度|Oracle数据类型|
+    |:--|:--|--:|:--|
+    |column1|bigint|8|NUMBER(19)|
+    |column2|binary|50|RAW(50)|
+    |column3|bit|1|NUMBER(2)|
+    |column4|char|10|CHAR(10)|
+    |column5|datetime|8|DATE|
+    |column6|decimal|9|NUMBER(18)|
+    |column7|float|8|BINARY_DOUBLE|
+    |column8|image|16|BLOB|
+    |column9|int|4|NUMBER(10)|
+    |column10|money|8|NUMBER(19,4)|
+    |column11|nchar|10|NCHAR(10)|
+    |column12|ntext|16|NCLOB|
+    |column13|numeric|9|NUMBER(18)|
+    |column14|nvarchar|50|NVARCHAR2(50)|
+    |column15|real|4|BINARY_FLOAT|
+    |column16|smalldatetime|4|DATE|
+    |column17|smallint|2|NUMBER(5)|
+    |column18|smallmoney|4|NUMBER(10,4)|
+    |column19|sql_variant||BLOB|
+    |column20|text|16|CLOB|
+    |column21|timestamp|8|RAW(8)|
+    |column22|tinyint|1|NUMBER(3)|
+    |column23|uniqueidentifier|16|BLOB|
+    |column24|varbinary|50|RAW(50)|
+    |column25|varchar|50|VARCHAR2(50)|
+  
+  * Oracle 10g 转换为 Sql Server 2000
+  
+    |Oracle列名|Oracle数据类型|SqlServer列名|SqlServer数据类型|SqlServer数据长度|
+    |:--|:--|:--|:--|--:|
+    |COLUMN1|BINARY_DOUBLE|COLUMN1|float|8|
+    |COLUMN2|BINARY_FLOAT|COLUMN2|real|4|
+    |COLUMN3|BLOB|COLUMN3|image|16|
+    |COLUMN4|CLOB|COLUMN4|ntext|16|
+    |COLUMN5|CHAR(10)|COLUMN5|nchar|10|
+    |COLUMN6|DATE|COLUMN6|datetime|8|
+    |COLUMN12|NUMBER|COLUMN12|numeric|13|
+    |COLUMN13|NVARCHAR2(10)|COLUMN13|nvarchar|10|
+    |COLUMN14|RAW(10)|COLUMN14|varbinary|10|
+    |COLUMN15|TIMESTAMP(6)|COLUMN15|datetime|8|
+    |COLUMN16|TIMESTAMP(6) WITH LOCAL TIME ZONE|COLUMN16|datetime|8|
+    |COLUMN17|TIMESTAMP(6) WITH TIME ZONE|COLUMN17|datetime|8|
+    |COLUMN18|VARCHAR2(10)|COLUMN18|nvarchar|10|
+    |COLUMN7|INTERVAL DAY(2) TO SECOND(6)|COLUMN7|nvarchar|30|
+    |COLUMN8|INTERVAL YEAR(2) TO MONTH|COLUMN8|nvarchar|14|
+    |COLUMN9|LONG|COLUMN9|ntext|16|
+    |COLUMN10|LONG RAW|COLUMN10|image|16|
+    |COLUMN11|NCLOB|COLUMN11|ntext|16|
+
 * 游标
   - SQL Server游标语句使用方法
   ```
@@ -113,3 +168,5 @@ create table table_name_new as select * from table_name_old;
 * [oracle恢复删除的数据](https://www.cnblogs.com/kangxuebin/archive/2013/05/29/3106183.html)
 
 * [Oracle字符集的查看查询和Oracle字符集的设置修改](https://www.cnblogs.com/perilla/p/3873653.html)
+
+* [sql server 与oracle 中字段类型的对应](https://blog.csdn.net/yali1990515/article/details/50467259)
