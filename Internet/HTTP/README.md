@@ -10,4 +10,7 @@
 
 
 # 参考
-  * [Content Security Policy Level 3](https://w3c.github.io/webappsec-csp/)
+
+  * [Content Security Policy Level 3|W3C](https://w3c.github.io/webappsec-csp/)
+  
+  * [Content-Security-Policy|mozilla](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
