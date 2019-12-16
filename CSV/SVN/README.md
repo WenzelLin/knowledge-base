@@ -286,4 +286,7 @@ return $today;
 你可能已经注意到上面的备份似乎都是本地备份，不是异地备份。实际上，我是通过将远程的备份机mount（请参阅mount命令）到svn服务器上来实现的，逻辑上看起来是本地备份，物理上实际是异地备份。
   
   参考：  
+  
   [SVN服务器几种备份策略----------重点svnsync备份](http://www.blogjava.net/jasmine214--love/archive/2010/09/28/333223.html)
+  
+  [svn Please execute the 'Cleanup' command. 问题解决](https://www.cnblogs.com/yougmi/p/7272692.html)
