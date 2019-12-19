@@ -1,3 +1,7 @@
+* [HTTP文件上传原理](https://www.cnblogs.com/vipygd/p/11279537.html)
+
+* [MIME 参考手册](https://www.w3school.com.cn/media/media_mimeref.asp)
+
 * [OSI 七层协议](https://github.com/WenzelLin/knowledge-base/blob/master/Internet/OSI.md)
 
 * [TCP/IP 五层模型](https://github.com/WenzelLin/knowledge-base/blob/master/Internet/TCP-IP.md)
@@ -14,3 +18,4 @@
   * [Content Security Policy Level 3|W3C](https://w3c.github.io/webappsec-csp/)
   
   * [Content-Security-Policy|mozilla](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+
