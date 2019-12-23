@@ -1,3 +1,66 @@
+* update多列数据
+  
+  * oracle
+  
+    语法格式：
+    ```SQL
+    update table1 
+      set (column1,column2) = 
+        (select table2.column1, table2.cloumn2 from table2 where table1.id = table2.id) 
+     where exists(select 1 from table2 where table1.id = table2.id);
+    ```
+  * sqlserver
+  
+    语法格式：
+    ```SQL
+    update table1 
+      set table1.column1 = table2.column1, table1.column2 = table2.column2 
+     from table2 
+    where table1.id = table2.id;
+    ```
+    ```SQL
+    /* Creating First table */
+    CREATE TABLE [dbo].[MyTecBits_Table_1](
+    [Sl_no] [int] IDENTITY(1,1) NOT NULL,
+    [Name] [varchar](50) NULL,
+    [Description] [varchar](500) NULL
+    ) ON [PRIMARY]
+    GO
+
+    insert into MyTecBits_Table_1 values ('Name One','Description One')
+    insert into MyTecBits_Table_1 values ('Name Two','Description Two')
+    insert into MyTecBits_Table_1 values ('Name Three','Description Three')
+    insert into MyTecBits_Table_1 values ('Name Four','Description Four')
+
+    /* Creating Second table */
+    CREATE TABLE [dbo].[MyTecBits_Table_2](
+    [Sl_no] [int] IDENTITY(1,1) NOT NULL,
+    [Name] [varchar](50) NULL,
+    [Description] [varchar](500) NULL
+    ) ON [PRIMARY]
+    GO
+
+    insert into MyTecBits_Table_2 values ('1st Name','1st Description')
+    insert into MyTecBits_Table_2 values ('2nd Name','2nd Description')
+    insert into MyTecBits_Table_2 values ('3rd Name','3rd Description')
+    insert into MyTecBits_Table_2 values ('4th Name','3rd Description')
+
+
+    Select * from MyTecBits_Table_1;
+    Select * from MyTecBits_Table_2;
+    
+    
+    Update MyTecBits_Table_1 
+    Set Name = b.Name, Description = b.Description
+    From MyTecBits_Table_2 as b
+    where MyTecBits_Table_1.Sl_no = b.Sl_no;
+    
+
+    Select * from MyTecBits_Table_1;
+    Select * from MyTecBits_Table_2;
+    
+    ```
+
 * Sql Server 与 Oracle 的字段类型对应
   
   * Sql Server 2000 转换为Oracle 10g
@@ -170,3 +233,5 @@ create table table_name_new as select * from table_name_old;
 * [Oracle字符集的查看查询和Oracle字符集的设置修改](https://www.cnblogs.com/perilla/p/3873653.html)
 
 * [sql server 与oracle 中字段类型的对应](https://blog.csdn.net/yali1990515/article/details/50467259)
+
+* [SQL Server: Update From Select Statement](https://www.mytecbits.com/microsoft/sql-server/update-from-select)
