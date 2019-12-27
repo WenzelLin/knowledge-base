@@ -3,7 +3,7 @@
   * 设置字段或方法是否参与序列化
     ```java
     @JSONField(serialize=false)
-   ```
+    ```
     alibaba的json的Jar包，序列化时，是根据方法来的。
 
 # 前端
