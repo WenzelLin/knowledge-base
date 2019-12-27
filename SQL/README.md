@@ -1,3 +1,13 @@
+* 数据库表名、列名的长度限制
+  
+  |数据库|表名|列名| 
+  |:--:|:--:|:--:|
+  |mysql|64|64|
+  |oracle|30|30|
+  |db2|128|128|
+  |access|64|64|
+  |mssql|128|128|
+
 * update多列数据
   
   * oracle
@@ -235,3 +245,5 @@ create table table_name_new as select * from table_name_old;
 * [sql server 与oracle 中字段类型的对应](https://blog.csdn.net/yali1990515/article/details/50467259)
 
 * [SQL Server: Update From Select Statement](https://www.mytecbits.com/microsoft/sql-server/update-from-select)
+
+* [oracle的表名、字段名、constraint名的长度限制分别是多少？](https://blog.csdn.net/haiross/article/details/38379615)
