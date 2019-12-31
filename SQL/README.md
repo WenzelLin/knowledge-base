@@ -1,3 +1,29 @@
+* 查看约束
+
+ * oracle
+ 
+   ```SQL
+   SELECT USER_CONS_COLUMNS.CONSTRAINT_NAME AS 约束名,
+         USER_CONS_COLUMNS.TABLE_NAME      AS 表名,
+         USER_CONS_COLUMNS.COLUMN_NAME     AS 列名,
+         USER_CONS_COLUMNS.POSITION        AS 位置,
+         USER_CONSTRAINTS.search_condition AS 条件
+    FROM USER_CONSTRAINTS
+    JOIN USER_CONS_COLUMNS
+      ON (USER_CONSTRAINTS.CONSTRAINT_NAME =
+         USER_CONS_COLUMNS.CONSTRAINT_NAME)
+   WHERE USER_CONSTRAINTS.CONSTRAINT_TYPE = 'C';
+   /*
+    注: 最后那里的 WHERE 填写的条件的注意：
+    C (check constraint on a table) C 表示 CHECK 约束。
+    P (primary key) P 表示主键
+    U (unique key) U 表示唯一
+    R (referential integrity) P 表示引用(外键)
+    V (with check option, on a view)
+    O (with read only, on a view)
+    */
+   ```
+
 * Cast
 
   * oracle
