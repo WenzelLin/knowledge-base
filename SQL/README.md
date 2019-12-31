@@ -1,3 +1,11 @@
+* Cast
+
+  * oracle
+  
+    语法：CAST(expr AS type_name)
+
+    例如：select cast(1 as varchar2(50)) from daul;
+
 * 数据库表名、列名的长度限制
   
   |数据库|表名|列名| 
