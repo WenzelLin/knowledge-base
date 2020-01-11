@@ -22,6 +22,18 @@
     V (with check option, on a view)
     O (with read only, on a view)
     */
+    
+   select 
+         b.constraint_name 外键名称, 
+         b.table_name 约束表,  
+         b.column_name 约束列,
+         c.table_name as 参照表,
+         c.column_name 参照列,
+         a.delete_rule 删除级联
+    from user_constraints a
+    left  join user_cons_columns b on a.constraint_name = b.constraint_name
+    left  join user_cons_columns c on a.r_constraint_name = c.constraint_name
+   where a.constraint_type = 'R' ;
    ```
 
 * Cast
