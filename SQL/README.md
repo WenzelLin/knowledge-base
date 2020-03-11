@@ -1,3 +1,13 @@
+* 精度问题
+ 
+ * sqlserver
+
+   ```SQL
+   -- 自动转型，导致精度丢失
+   select case when column = 0 then 0 else column end from table; 
+   -- 还有一种是减法的， 1.4-isnull(column, 0) 或 1.4-isnull(column, 0.00)
+   ```
+
 * 查看约束
 
  * oracle
