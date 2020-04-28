@@ -1,5 +1,4 @@
-# BFS
-
+# BFS  
   * 模板 I
   ```java
   /**
@@ -66,3 +65,48 @@ int BFS(Node root, Node target) {
 有两种情况你不需要使用哈希集：
 > 1, 你完全确定没有循环，例如，在树遍历中；  
 > 2, 你确实希望多次将结点添加到队列中。
+
+# DFS  
+ * 模板-递归
+ ```java
+ /*
+ * Return true if there is a path from cur to target.
+ */
+boolean DFS(Node cur, Node target, Set<Node> visited) {
+    return true if cur is target;
+    for (next : each neighbor of cur) {
+        if (next is not in visited) {
+            add next to visted;
+            return true if DFS(next, target, visited) == true;
+        }
+    }
+    return false;
+}
+ ```
+ 当我们递归地实现 DFS 时，似乎不需要使用任何栈。但实际上，我们使用的是由系统提供的隐式栈，也称为调用栈（Call Stack）。
+ 
+ * 模板-显式栈
+ ```java
+ /*
+  * Return true if there is a path from cur to target.
+  */
+ boolean DFS(int root, int target) {
+     Set<Node> visited;
+     Stack<Node> s;
+     add root to s;
+     while (s is not empty) {
+         Node cur = the top element in s;
+         return true if cur is target;
+         for (Node next : the neighbors of cur) {
+             if (next is not in visited) {
+                 add next to s;
+                 add next to visited;
+             }
+         }
+         remove cur from s;
+     }
+     return false;
+ }
+```
+该逻辑与递归解决方案完全相同。 但我们使用 while 循环和栈来模拟递归期间的系统调用栈。 手动运行几个示例肯定会帮助你更好地理解它。
+ 
