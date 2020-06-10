@@ -87,3 +87,5 @@
 
 # 参考
   * [CSS3 box-shadow 属性](http://www.w3school.com.cn/cssref/pr_box-shadow.asp)
+  * [CSS3 字体|W3c school](https://www.w3school.com.cn/css3/css3_font.asp)
+  * [@font-face|MDN web docs](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face)
