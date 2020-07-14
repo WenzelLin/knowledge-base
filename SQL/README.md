@@ -1,3 +1,26 @@
+* 空判断问题
+ 
+ * sqlserver
+   
+   某字段其值有可能为空，在使用该字段时，必须要结合空或非空判断来使用。
+   
+   ```SQL
+    -- 判断值为空或小于2020-01-01
+    select 1 from table where column = '' or column is null or column < '2020-01-01'; 
+    -- 判断值为非空且大于等于2020-01-01
+    select 1 from table where column <> '' and column is not null and column >= '2020-01-01'; 
+   ```
+ * oracle
+ 
+  某字段其值有可能为空，在使用该字段时，必须要结合空或非空判断来使用。
+  
+  ```SQL
+    -- 判断值为空或小于2020-01-01
+    select 1 from table where column = '' or column is null or column < '2020-01-01'; 
+    -- 判断值为非空且大于等于2020-01-01
+    select 1 from table where column is not null and column >= '2020-01-01'; 
+   ```
+
 * 精度问题
  
  * sqlserver
